@@ -101,6 +101,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1932,15 +1944,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_87
+      name: PlayerProjectile
       rect:
         serializedVersion: 2
         x: 79
         y: 557
         width: 8
         height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2394,15 +2406,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_109
+      name: EnemyProjectile
       rect:
         serializedVersion: 2
         x: 383
         y: 534
         width: 8
         height: 8
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -14542,6 +14554,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      EnemyProjectile: 751185617
+      PlayerProjectile: 464830721
       Sprite_Enemies_0: -2039162945
       Sprite_Enemies_1: 1870581652
       Sprite_Enemies_10: -275104244
@@ -14554,7 +14568,6 @@ TextureImporter:
       Sprite_Enemies_106: -1607433057
       Sprite_Enemies_107: -564931560
       Sprite_Enemies_108: 1750079886
-      Sprite_Enemies_109: 751185617
       Sprite_Enemies_11: -1979302637
       Sprite_Enemies_110: 1504637247
       Sprite_Enemies_111: -1141849646
@@ -15215,7 +15228,6 @@ TextureImporter:
       Sprite_Enemies_84: 450165806
       Sprite_Enemies_85: -503580284
       Sprite_Enemies_86: 480737775
-      Sprite_Enemies_87: 464830721
       Sprite_Enemies_88: 1147355802
       Sprite_Enemies_89: -392071928
       Sprite_Enemies_9: 1957385610
