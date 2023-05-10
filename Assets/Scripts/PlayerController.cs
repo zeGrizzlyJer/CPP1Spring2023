@@ -24,7 +24,38 @@ public class PlayerController : MonoBehaviour
 
     //Jump Check
     public bool isFalling;
+    Coroutine jumpForceChange = null;
 
+    //Size Increase
+    Coroutine sizeChange = null;
+
+    //Life Values
+    public int lives
+    {
+        get => _lives;
+        set
+        {
+            _lives = value;
+
+            Debug.Log("Lives value has changed to " + _lives.ToString());
+        }
+    }
+
+    private int _lives = 3;
+
+    //Score Values
+    public int score
+    {
+        get => _score;
+        set
+        {
+            _score = value;
+
+            Debug.Log("Score value has changed to " + _score.ToString());
+        }
+    }
+
+    private int _score = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -99,15 +130,70 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = 10;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void StartJumpForceChange()
     {
-        GameObject otherCollider = collision.gameObject;
-        Debug.Log("Collision!");
-        if (otherCollider.layer == 6)
+        Debug.Log("Power up has been collected");
+        if (jumpForceChange == null)
         {
-            Destroy(otherCollider);
+            jumpForceChange = StartCoroutine(JumpForceChange());
+            return;
         }
+        //Restart process if pickups were collected while 'still under the influence'
+        StopCoroutine(jumpForceChange);
+        jumpForceChange = null;
+        jumpForce /= 2;
+
+        StartJumpForceChange();
     }
+
+    IEnumerator JumpForceChange()
+    {
+        jumpForce *= 2;
+
+        yield return new WaitForSeconds(5.0f);
+
+        jumpForce /= 2;
+        jumpForceChange = null;
+    }
+
+    public void StartSizeChange()
+    {
+        Debug.Log("Power up has been collected");
+        if (sizeChange == null)
+        {
+            sizeChange = StartCoroutine(SizeChange());
+            return;
+        }
+
+        StopCoroutine(sizeChange);
+        sizeChange = null;
+        gameObject.transform.localScale /= 2;
+
+        StartSizeChange();
+    }
+
+    IEnumerator SizeChange()
+    {
+        gameObject.transform.localScale *= 2;
+
+        yield return new WaitForSeconds(4.0f);
+        gameObject.transform.localScale /= 2;
+        yield return new WaitForSeconds(0.5f);
+        gameObject.transform.localScale *= 2;
+        yield return new WaitForSeconds(0.5f);
+        gameObject.transform.localScale /= 2;
+        yield return new WaitForSeconds(0.5f);
+        gameObject.transform.localScale *= 2;
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.transform.localScale /= 2;
+        sizeChange = null;
+    }
+
+    /*private void OnTriggerEnter2D(Collider2D collision)
+    {
+  
+    }*/
 
     /*private void OnTriggerExit2D(Collider2D collision)
     {
