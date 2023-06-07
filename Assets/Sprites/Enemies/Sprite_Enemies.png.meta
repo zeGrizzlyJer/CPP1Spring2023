@@ -7131,7 +7131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_334
+      name: turret_0
       rect:
         serializedVersion: 2
         x: 800
@@ -7152,7 +7152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_335
+      name: turret_1
       rect:
         serializedVersion: 2
         x: 823
@@ -7173,7 +7173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_336
+      name: turret_2
       rect:
         serializedVersion: 2
         x: 852
@@ -7194,7 +7194,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_337
+      name: turret_idle
       rect:
         serializedVersion: 2
         x: 881
@@ -9672,7 +9672,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_455
+      name: enemy_walk_turn
       rect:
         serializedVersion: 2
         x: 9
@@ -9693,7 +9693,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_456
+      name: enemy_walk0
       rect:
         serializedVersion: 2
         x: 27
@@ -9714,7 +9714,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_457
+      name: enemy_walk1
       rect:
         serializedVersion: 2
         x: 46
@@ -9924,7 +9924,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_467
+      name: enemy_hit
       rect:
         serializedVersion: 2
         x: 250
@@ -10596,7 +10596,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite_Enemies_499
+      name: enemy_squash
       rect:
         serializedVersion: 2
         x: 250
@@ -14817,10 +14817,6 @@ TextureImporter:
       Sprite_Enemies_331: 492329225
       Sprite_Enemies_332: 6028391
       Sprite_Enemies_333: -576064557
-      Sprite_Enemies_334: 1789060254
-      Sprite_Enemies_335: 572496536
-      Sprite_Enemies_336: 1769480662
-      Sprite_Enemies_337: 378312000
       Sprite_Enemies_338: -582088978
       Sprite_Enemies_339: 1776233718
       Sprite_Enemies_34: -1485418479
@@ -14951,9 +14947,6 @@ TextureImporter:
       Sprite_Enemies_452: -772820040
       Sprite_Enemies_453: 1182008460
       Sprite_Enemies_454: 498234479
-      Sprite_Enemies_455: -1942094182
-      Sprite_Enemies_456: 525172700
-      Sprite_Enemies_457: -90490705
       Sprite_Enemies_458: 466412542
       Sprite_Enemies_459: -890635778
       Sprite_Enemies_46: 1686478176
@@ -14964,7 +14957,6 @@ TextureImporter:
       Sprite_Enemies_464: 28949158
       Sprite_Enemies_465: -1468903905
       Sprite_Enemies_466: -457952097
-      Sprite_Enemies_467: 47833015
       Sprite_Enemies_468: 806591820
       Sprite_Enemies_469: 1375245808
       Sprite_Enemies_47: 819426977
@@ -14999,7 +14991,6 @@ TextureImporter:
       Sprite_Enemies_496: 1424438593
       Sprite_Enemies_497: 877596567
       Sprite_Enemies_498: -572224420
-      Sprite_Enemies_499: 2028128779
       Sprite_Enemies_5: 1951341684
       Sprite_Enemies_50: 1110100636
       Sprite_Enemies_500: -651009844
@@ -15241,6 +15232,15 @@ TextureImporter:
       Sprite_Enemies_97: 1747035549
       Sprite_Enemies_98: 1043931347
       Sprite_Enemies_99: -1028921216
+      enemy_hit: 47833015
+      enemy_squash: 2028128779
+      enemy_walk0: 525172700
+      enemy_walk1: -90490705
+      enemy_walk_turn: -1942094182
+      turret_0: 1789060254
+      turret_1: 572496536
+      turret_2: 1769480662
+      turret_idle: 378312000
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

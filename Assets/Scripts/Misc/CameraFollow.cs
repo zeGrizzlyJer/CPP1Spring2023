@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform player;
-
     public float minX;
     public float maxX;
 
@@ -14,7 +12,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 cameraPos;
 
         cameraPos = transform.position;
-        cameraPos.x = Mathf.Clamp(player.transform.position.x, minX, maxX);
+        cameraPos.x = Mathf.Clamp(GameManager.instance.playerInstance.transform.position.x, minX, maxX);
 
         transform.position = cameraPos;
     }

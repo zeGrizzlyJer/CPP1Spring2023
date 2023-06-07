@@ -29,34 +29,6 @@ public class PlayerController : MonoBehaviour
     //Size Increase
     Coroutine sizeChange = null;
 
-    //Life Values
-    public int lives
-    {
-        get => _lives;
-        set
-        {
-            _lives = value;
-
-            Debug.Log("Lives value has changed to " + _lives.ToString());
-        }
-    }
-
-    private int _lives = 3;
-
-    //Score Values
-    public int score
-    {
-        get => _score;
-        set
-        {
-            _score = value;
-
-            Debug.Log("Score value has changed to " + _score.ToString());
-        }
-    }
-
-    private int _score = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +46,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0) return;
         AnimatorClipInfo[] curPlayingClips = anim.GetCurrentAnimatorClipInfo(0);
         float hInput = Input.GetAxis("Horizontal");
 
@@ -190,10 +163,15 @@ public class PlayerController : MonoBehaviour
         sizeChange = null;
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-  
-    }*/
+        if (collision.CompareTag("Squish"))
+        {
+            EnemyWalker enemy = collision.gameObject.transform.parent.GetComponent<EnemyWalker>();
+            enemy.Squish();
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce / 2f);
+        }
+    }
 
     /*private void OnTriggerExit2D(Collider2D collision)
     {

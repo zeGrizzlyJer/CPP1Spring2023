@@ -33,10 +33,10 @@ public class Pickups : MonoBehaviour
             }
             if (currentPickup == PickupType.Life)
             {
-                LifeUp(myController);
+                LifeUp();
                 return;
             }
-            ScoreUp(myController);
+            ScoreUp();
         }
     }
 
@@ -52,15 +52,15 @@ public class Pickups : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void LifeUp(PlayerController player)
+    void LifeUp()
     {
-        player.lives++;
+        GameManager.instance.lives++;
         Destroy(gameObject);
     }
 
-    void ScoreUp(PlayerController player)
+    void ScoreUp()
     {
-        player.score++;
+        GameManager.instance.score++;
         Destroy(gameObject);
     }
 }

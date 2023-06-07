@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Shoot : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Shoot : MonoBehaviour
 
     public Projectile projectilePrefab;
 
+    public UnityEvent OnProjectileSpawned;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -38,5 +40,6 @@ public class Shoot : MonoBehaviour
             temp.transform.position = spawnPointLeft.position;
             temp.speed = -projectileSpeed;
         }
+        OnProjectileSpawned?.Invoke();
     }
 }
