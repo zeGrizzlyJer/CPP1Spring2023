@@ -6,17 +6,19 @@ using UnityEngine.Events;
 public class Shoot : MonoBehaviour
 {
     SpriteRenderer sr;
+    AudioSourceManager asm;
 
     public float projectileSpeed;
     public Transform spawnPointRight;
     public Transform spawnPointLeft;
 
     public Projectile projectilePrefab;
-
+    public AudioClip fireSound;
     public UnityEvent OnProjectileSpawned;
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        asm= GetComponent<AudioSourceManager>();
 
         if (projectileSpeed <= 0) projectileSpeed = 7.0f;
 
@@ -41,5 +43,6 @@ public class Shoot : MonoBehaviour
             temp.speed = -projectileSpeed;
         }
         OnProjectileSpawned?.Invoke();
+        asm.PlayOneShot(fireSound, false);
     }
 }

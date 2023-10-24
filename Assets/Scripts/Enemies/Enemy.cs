@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     protected SpriteRenderer sr;
     protected Animator anim;
+    public AudioClip deathClip;
 
     protected int _health;
     public int maxHealth;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Death()
     {
+        GameManager.instance.playerInstance.GetComponent<AudioSourceManager>().PlayOneShot(deathClip, false);
         anim.SetTrigger("Death");
     }
 

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     Animator anim;
+    AudioSourceManager asm;
 
     //Movement Variables
     public float speed = 5.0f;
@@ -29,12 +30,16 @@ public class PlayerController : MonoBehaviour
     //Size Increase
     Coroutine sizeChange = null;
 
-    // Start is called before the first frame update
+    //Audio Clips
+    public AudioClip jumpSound;
+    public AudioClip coinSound;
+    public AudioClip respawnSound;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        asm = GetComponent<AudioSourceManager>();
 
         if (speed <= 0) speed = 5.0f;
         if (jumpForce <= 0) jumpForce = 300.0f;
@@ -76,6 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 jumpDirection = new Vector2(rb.velocity.x, jumpForce);
             rb.velocity = jumpDirection;
+            asm.PlayOneShot(jumpSound, false);
         }
 
         Vector2 moveDirection = new Vector2(hInput * speed, rb.velocity.y);

@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(AudioSourceManager))]
 public class CanvasManager : MonoBehaviour
 {
+    AudioSourceManager asm;
+    public AudioMixer audioMixer;
+    public AudioClip sceneMusic;
+    public AudioClip pauseSound;
+    public AudioClip gameOverSound;
+
     [Header("Buttons")]
     public Button startButton;
     public Button settingsButton;
@@ -28,6 +37,9 @@ public class CanvasManager : MonoBehaviour
 
     private void Start()
     {
+        asm = GetComponent<AudioSourceManager>();
+        if (sceneMusic) asm.PlayOneShot(sceneMusic, true);
+        if (gameOverSound) asm.PlayOneShot(gameOverSound, false);
         if (startButton)    startButton.onClick.AddListener(StartGame);
         if (settingsButton) settingsButton.onClick.AddListener(ShowSettingsMenu);
         if (backButton)     backButton.onClick.AddListener(ShowMainMenu);
@@ -53,6 +65,7 @@ public class CanvasManager : MonoBehaviour
             pauseMenu.SetActive(!pauseMenu.activeSelf);
             if (pauseMenu.activeSelf)
             {
+                if (pauseSound) asm.PlayOneShot(pauseSound, false);
                 Time.timeScale = 0;
             }
             else
@@ -77,6 +90,14 @@ public class CanvasManager : MonoBehaviour
     {
         mainMenu.SetActive(false);
         settingsMenu.SetActive(true);
+
+        if (volSlider && volSliderText)
+        {
+            float value;
+            audioMixer.GetFloat("MasterVol", out value);
+            volSlider.value = value + 80;
+            volSliderText.text = Mathf.Ceil(value + 80).ToString();
+        }
     }
     private void ShowMainMenu()
     {
@@ -86,6 +107,7 @@ public class CanvasManager : MonoBehaviour
     private void OnSliderValueChanged(float value)
     {
         volSliderText.text = value.ToString();
+        audioMixer.SetFloat("MasterVol", value - 80);
     }
     private void UpdateLifeText(int value)
     {

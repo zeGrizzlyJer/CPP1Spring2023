@@ -6,9 +6,7 @@ using UnityEngine.Events;
 
 [DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
-{
-    SceneManager sm;
-    
+{ 
     //Instance Manager
     static GameManager _instance = null;
     public static GameManager instance
@@ -21,7 +19,7 @@ public class GameManager : MonoBehaviour
     }
 
     //Life Values
-    private int _lives = 3;
+    private int _lives = 2;
     public int maxLives = 3;
     public int lives
     {
@@ -109,12 +107,13 @@ public class GameManager : MonoBehaviour
 
     private void Respawn()
     {
-        Destroy(playerInstance.gameObject);
-        SpawnPlayer(spawnPoint);
+        playerInstance.transform.position = spawnPoint.position;
+        playerInstance.GetComponent<AudioSourceManager>().PlayOneShot(playerInstance.respawnSound, false);
     }
 
     private void GameOver()
     {
         SceneManager.LoadScene("GameOver");
+
     }
 }
